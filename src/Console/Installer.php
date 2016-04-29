@@ -38,20 +38,19 @@ class Installer
         $rootDir = dirname(dirname(__DIR__));
 
         static::createAppConfig($rootDir, $io);
-        static::createWritableDirectories($rootDir, $io);
 
         // ask if the permissions should be changed
         if ($io->isInteractive()) {
-            $validator = function ($arg) {
+            $validator = (function ($arg) {
                 if (in_array($arg, ['Y', 'y', 'N', 'n'])) {
                     return $arg;
                 }
                 throw new Exception('This is not a valid answer. Please choose Y or n.');
-            };
+            });
             $setFolderPermissions = $io->askAndValidate(
                 '<info>Set Folder Permissions ? (Default to Y)</info> [<comment>Y,n</comment>]? ',
                 $validator,
-                10,
+                false,
                 'Y'
             );
 
@@ -87,35 +86,6 @@ class Installer
     }
 
     /**
-     * Create the `logs` and `tmp` directories.
-     *
-     * @param string $dir The application's root directory.
-     * @param \Composer\IO\IOInterface $io IO interface to write to console.
-     * @return void
-     */
-    public static function createWritableDirectories($dir, $io)
-    {
-        $paths = [
-            'logs',
-            'tmp',
-            'tmp/cache',
-            'tmp/cache/models',
-            'tmp/cache/persistent',
-            'tmp/cache/views',
-            'tmp/sessions',
-            'tmp/tests'
-        ];
-
-        foreach ($paths as $path) {
-            $path = $dir . '/' . $path;
-            if (!file_exists($path)) {
-                mkdir($path);
-                $io->write('Created `' . $path . '` directory');
-            }
-        }
-    }
-
-    /**
      * Set globally writable permissions on the "tmp" and "logs" directory.
      *
      * This is not the most secure default, but it gets people up and running quickly.
@@ -128,8 +98,8 @@ class Installer
     {
         // Change the permissions on a path and output the results.
         $changePerms = function ($path, $perms, $io) {
-            // Get permission bits from stat(2) result.
-            $currentPerms = fileperms($path) & 0777;
+            // Get current permissions in decimal format so we can bitmask it.
+            $currentPerms = octdec(substr(sprintf('%o', fileperms($path)), -4));
             if (($currentPerms & $perms) == $perms) {
                 return;
             }

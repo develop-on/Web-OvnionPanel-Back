@@ -20,7 +20,7 @@ use Cake\Log\Log;
 use Psy\Shell as PsyShell;
 
 /**
- * Simple console wrapper around Psy\Shell.
+ * Simple console wrapper around Boris.
  */
 class ConsoleShell extends Shell
 {
@@ -28,7 +28,7 @@ class ConsoleShell extends Shell
     /**
      * Start the shell and interactive console.
      *
-     * @return int|null
+     * @return int|void
      */
     public function main()
     {
@@ -42,7 +42,7 @@ class ConsoleShell extends Shell
             $this->err('');
             $this->err('<info>$ php composer.phar require --dev psy/psysh</info>');
             $this->err('');
-            return self::CODE_ERROR;
+            return 1;
         }
 
         $this->out("You can exit with <info>`CTRL-C`</info> or <info>`exit`</info>");
@@ -61,11 +61,11 @@ class ConsoleShell extends Shell
     /**
      * Display help for this console.
      *
-     * @return \Cake\Console\ConsoleOptionParser
+     * @return ConsoleOptionParser
      */
     public function getOptionParser()
     {
-        $parser = new ConsoleOptionParser('console');
+        $parser = new ConsoleOptionParser('console', false);
         $parser->description(
             'This shell provides a REPL that you can use to interact ' .
             'with your application in an interactive fashion. You can use ' .

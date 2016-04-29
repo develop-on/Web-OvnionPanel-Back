@@ -5,16 +5,18 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "php": ">=5.5.9",
-        "cakephp/cakephp": "~3.2",
+        "php": ">=5.4.16",
+        "cakephp/cakephp": "~3.0",
         "mobiledetect/mobiledetectlib": "2.*",
         "cakephp/migrations": "~1.0",
-        "cakephp/plugin-installer": "*"
+        "cakephp/plugin-installer": "*",
+        "friendsofcake/crud": "~4.0",
+        "admad/cakephp-jwt-auth": "^2.0"
     },
     "require-dev": {
         "psy/psysh": "@stable",
-        "cakephp/debug_kit": "~3.2",
-        "cakephp/bake": "~1.1"
+        "cakephp/debug_kit": "~3.0",
+        "cakephp/bake": "~1.0"
     },
     "suggest": {
         "phpunit/phpunit": "Allows automated tests to be run without system-wide install.",
@@ -33,9 +35,8 @@
     },
     "scripts": {
         "post-install-cmd": "App\\Console\\Installer::postInstall",
-        "post-create-project-cmd": "App\\Console\\Installer::postInstall",
         "post-autoload-dump": "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }

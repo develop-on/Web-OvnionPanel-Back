@@ -1,6 +1,6 @@
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Cake is a Windows batch script for invoking CakePHP shell commands
+:: Bake is a shell script for running CakePHP bake script
 ::
 :: CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
 :: Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -15,6 +15,9 @@
 ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+:: In order for this script to work as intended, the cake\console\ folder must be in your PATH
+
+@echo.
 @echo off
 
 SET app=%0
