@@ -42,8 +42,8 @@ class CocktailsFixture extends TestFixture
             'id' => 1,
             'name' => 'Lorem ipsum dolor sit amet',
             'description' => 'Lorem ipsum dolor sit amet',
-            'created' => '2016-04-12 14:05:11',
-            'modified' => '2016-04-12 14:05:11'
+            'created' => '2016-05-21 19:14:47',
+            'modified' => '2016-05-21 19:14:47'
         ],
     ];
 }

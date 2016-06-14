@@ -4,17 +4,19 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Navigation Entity.
+ * Article Entity.
  *
  * @property int $id
+ * @property int $category_id
+ * @property \App\Model\Entity\Category $category
  * @property string $title
- * @property string $url
- * @property string $target
- * @property int $position
+ * @property string $slug
+ * @property string $body
+ * @property int $status
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  */
-class Navigation extends Entity
+class Article extends Entity
 {
 
     /**

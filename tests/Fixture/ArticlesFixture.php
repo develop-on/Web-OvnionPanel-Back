@@ -4,10 +4,10 @@ namespace App\Test\Fixture;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * NavigationsFixture
+ * ArticlesFixture
  *
  */
-class NavigationsFixture extends TestFixture
+class ArticlesFixture extends TestFixture
 {
 
     /**
@@ -18,10 +18,11 @@ class NavigationsFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
+        'category_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'title' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'url' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'target' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'position' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'slug' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'body' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'status' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_constraints' => [
@@ -42,12 +43,13 @@ class NavigationsFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
+            'category_id' => 1,
             'title' => 'Lorem ipsum dolor sit amet',
-            'url' => 'Lorem ipsum dolor sit amet',
-            'target' => 'Lorem ipsum dolor sit amet',
-            'position' => 1,
-            'created' => '2016-06-14 16:15:31',
-            'modified' => '2016-06-14 16:15:31'
+            'slug' => 'Lorem ipsum dolor sit amet',
+            'body' => 'Lorem ipsum dolor sit amet',
+            'status' => 1,
+            'created' => '2016-06-14 16:15:58',
+            'modified' => '2016-06-14 16:15:58'
         ],
     ];
 }

@@ -1,17 +1,18 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\User;
+use App\Model\Entity\Article;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Users Model
+ * Articles Model
  *
+ * @property \Cake\ORM\Association\BelongsTo $Categories
  */
-class UsersTable extends Table
+class ArticlesTable extends Table
 {
 
     /**
@@ -24,11 +25,16 @@ class UsersTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('users');
-        $this->displayField('id');
+        $this->table('articles');
+        $this->displayField('title');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->belongsTo('Categories', [
+            'foreignKey' => 'category_id',
+            'joinType' => 'INNER'
+        ]);
     }
 
     /**
@@ -44,16 +50,21 @@ class UsersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('username', 'create')
-            ->notEmpty('username');
+            ->requirePresence('title', 'create')
+            ->notEmpty('title');
 
         $validator
-            ->requirePresence('password', 'create')
-            ->notEmpty('password');
+            ->requirePresence('slug', 'create')
+            ->notEmpty('slug');
 
         $validator
-            ->add('active', 'valid', ['rule' => 'boolean'])
-            ->allowEmpty('active');
+            ->requirePresence('body', 'create')
+            ->notEmpty('body');
+
+        $validator
+            ->add('status', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('status', 'create')
+            ->notEmpty('status');
 
         return $validator;
     }
@@ -67,7 +78,7 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['username']));
+        $rules->add($rules->existsIn(['category_id'], 'Categories'));
         return $rules;
     }
 }

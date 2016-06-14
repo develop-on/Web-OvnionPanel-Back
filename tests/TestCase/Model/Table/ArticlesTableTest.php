@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\NavigationsTable;
+use App\Model\Table\ArticlesTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\NavigationsTable Test Case
+ * App\Model\Table\ArticlesTable Test Case
  */
-class NavigationsTableTest extends TestCase
+class ArticlesTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\NavigationsTable
+     * @var \App\Model\Table\ArticlesTable
      */
-    public $Navigations;
+    public $Articles;
 
     /**
      * Fixtures
@@ -24,7 +24,8 @@ class NavigationsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.navigations'
+        'app.articles',
+        'app.categories'
     ];
 
     /**
@@ -35,8 +36,8 @@ class NavigationsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Navigations') ? [] : ['className' => 'App\Model\Table\NavigationsTable'];
-        $this->Navigations = TableRegistry::get('Navigations', $config);
+        $config = TableRegistry::exists('Articles') ? [] : ['className' => 'App\Model\Table\ArticlesTable'];
+        $this->Articles = TableRegistry::get('Articles', $config);
     }
 
     /**
@@ -46,7 +47,7 @@ class NavigationsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Navigations);
+        unset($this->Articles);
 
         parent::tearDown();
     }
@@ -67,6 +68,16 @@ class NavigationsTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     */
+    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

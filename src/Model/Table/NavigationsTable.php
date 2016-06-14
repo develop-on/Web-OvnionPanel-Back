@@ -10,8 +10,6 @@ use Cake\Validation\Validator;
 /**
  * Navigations Model
  *
- * @property \Cake\ORM\Association\BelongsTo $ParentNavigations
- * @property \Cake\ORM\Association\HasMany $ChildNavigations
  */
 class NavigationsTable extends Table
 {
@@ -31,15 +29,6 @@ class NavigationsTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
-
-        $this->belongsTo('ParentNavigations', [
-            'className' => 'Navigations',
-            'foreignKey' => 'parent_id'
-        ]);
-        $this->hasMany('ChildNavigations', [
-            'className' => 'Navigations',
-            'foreignKey' => 'parent_id'
-        ]);
     }
 
     /**
@@ -72,18 +61,5 @@ class NavigationsTable extends Table
             ->notEmpty('position');
 
         return $validator;
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->existsIn(['parent_id'], 'ParentNavigations'));
-        return $rules;
     }
 }

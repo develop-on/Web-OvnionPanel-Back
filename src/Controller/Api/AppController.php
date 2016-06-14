@@ -9,7 +9,8 @@ class AppController extends Controller
 
     use \Crud\Controller\ControllerTrait;
 
-    public function initialize()
+    
+	public function initialize()
     {
         parent::initialize();
         $this->loadComponent('RequestHandler');
