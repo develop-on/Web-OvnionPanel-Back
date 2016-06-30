@@ -54,12 +54,16 @@ class ArticlesTable extends Table
             ->notEmpty('title');
 
         $validator
-            ->requirePresence('slug', 'create')
-            ->notEmpty('slug');
-
-        $validator
             ->requirePresence('body', 'create')
             ->notEmpty('body');
+
+        $validator
+            ->requirePresence('img', 'create')
+            ->notEmpty('img');
+
+        $validator
+            ->requirePresence('url', 'create')
+            ->notEmpty('url');
 
         $validator
             ->add('status', 'valid', ['rule' => 'numeric'])
