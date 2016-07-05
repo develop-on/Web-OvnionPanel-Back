@@ -46,6 +46,8 @@ Router::prefix('api', function ($routes) {
     $routes->resources('Navigations');
     $routes->resources('Articles');
     $routes->resources('Categories');
+    $routes->resources('Events');
+    $routes->resources('EventTypes');
     $routes->resources('Users');
     Router::connect('/api/users/register', ['controller' => 'Users', 'action' => 'add', 'prefix' => 'api']);
     $routes->fallbacks('InflectedRoute');
