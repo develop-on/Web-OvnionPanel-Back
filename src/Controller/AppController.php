@@ -4,8 +4,7 @@ use Cake\Controller\Controller;
 class AppController extends Controller {
     use \Crud\Controller\ControllerTrait;
     public $components = [
-   public $components = [
-        'Crud.Crud' => [
+            'Crud.Crud' => [
             'actions' => [
                 'Crud.Index',
                 'Crud.View',
